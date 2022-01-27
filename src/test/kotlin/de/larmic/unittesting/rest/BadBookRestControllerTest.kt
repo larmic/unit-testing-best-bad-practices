@@ -1,8 +1,10 @@
 package de.larmic.unittesting.rest
 
+import de.larmic.unittesting.database.Author
+import de.larmic.unittesting.database.Book
 import de.larmic.unittesting.database.BookRepository
-import io.mockk.mockk
-import io.mockk.verify
+import de.larmic.unittesting.rest.mapper.DtoToDomainMapper
+import io.mockk.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
@@ -10,8 +12,9 @@ import java.time.Month
 
 internal class BadBookRestControllerTest {
 
+    private val dtoToDomainMapperMock = mockk<DtoToDomainMapper>()
     private val bookRepositoryMock = mockk<BookRepository>(relaxed = true)
-    private val controller = BookRestController(bookRepository = bookRepositoryMock)
+    private val controller = BookRestController(dtoToDomainMapper = dtoToDomainMapperMock, bookRepository = bookRepositoryMock)
 
     @Test
     internal fun `store new book`() {
@@ -20,6 +23,18 @@ internal class BadBookRestControllerTest {
             author = AuthorDto(firstName = "Frederic", lastName = "Laloux"),
             createDate = LocalDate.of(2014, Month.OCTOBER, 18),
         )
+
+        val dtoSlot = slot<BookDto>()
+
+        // configure mock
+        every { dtoToDomainMapperMock.map(capture(dtoSlot)) } answers {
+            val capturedDto = dtoSlot.captured
+            Book(
+                title = capturedDto.title,
+                author = Author(firstName = capturedDto.author.firstName, lastName = capturedDto.author.lastName),
+                createDate = capturedDto.createDate
+            )
+        }
 
         controller.createBook(bookDto)
 

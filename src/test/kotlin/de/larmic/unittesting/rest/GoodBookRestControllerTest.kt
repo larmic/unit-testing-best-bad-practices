@@ -2,6 +2,7 @@ package de.larmic.unittesting.rest
 
 import com.ninjasquad.springmockk.MockkBean
 import de.larmic.unittesting.database.BookRepository
+import de.larmic.unittesting.rest.mapper.DtoToDomainMapper
 import io.mockk.verify
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -15,7 +16,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import java.time.LocalDate
 import java.time.Month
 
-@WebMvcTest(BookRestController::class)
+@WebMvcTest(BookRestController::class, DtoToDomainMapper::class)
 internal class GoodBookRestControllerTest {
 
     @Autowired
