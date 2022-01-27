@@ -16,19 +16,17 @@ import java.time.LocalDate
 import java.time.Month
 
 @WebMvcTest(BookRestController::class)
-internal class BookRestControllerTest {
+internal class GoodBookRestControllerTest {
 
     @Autowired
     private lateinit var mockMvc: MockMvc
 
     @MockkBean(relaxed = true)
-    private lateinit var bookRepository: BookRepository
+    private lateinit var bookRepositoryMock: BookRepository
 
     @Test
     internal fun `store new book`() {
-        this.mockMvc.postJson(
-            url = "/api/book",
-            json = """ 
+        this.mockMvc.postJson(json = """ 
             {
                "title": "Reinventing Organizations",
                "createDate": "18.10.2014",
@@ -40,9 +38,9 @@ internal class BookRestControllerTest {
         )
 
         verify {
-            bookRepository.store(withArg {
+            bookRepositoryMock.store(withArg {
                 assertThat(it.title).isEqualTo("Reinventing Organizations")
-                assertThat(it.author.lastName).isEqualTo("Laloux")
+                assertThat(it.author.firstName).isEqualTo("Frederic")
                 assertThat(it.author.lastName).isEqualTo("Laloux")
                 assertThat(it.createDate).isEqualTo(LocalDate.of(2014, Month.OCTOBER, 18))
             })
@@ -50,8 +48,8 @@ internal class BookRestControllerTest {
     }
 }
 
-private fun MockMvc.postJson(url: String, json: String) = this.perform(
-    post(url)
+private fun MockMvc.postJson(json: String) = this.perform(
+    post("/api/book")
         .contentType(MediaType.APPLICATION_JSON)
         .content(json.trimIndent()))
     .andDo(print())
