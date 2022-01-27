@@ -12,6 +12,7 @@ import java.time.LocalDate
 //
 // 1. Siehe BadBookRestControllerTest.kt
 // 2. Siehe GoodBookRestControllerTest.kt
+// 3. Ändere Pattern an 'createDate' und führe beide Tests aus
 @RestController
 class BookRestController(private val dtoToDomainMapper: DtoToDomainMapper, private val bookRepository: BookRepository) {
 
