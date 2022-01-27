@@ -25,6 +25,7 @@ internal class BadBookRestControllerTest {
 
         verify {
             bookRepositoryMock.store(withArg {
+                assertThat(it.id).isNotNull
                 assertThat(it.title).isEqualTo("Reinventing Organizations")
                 assertThat(it.author.firstName).isEqualTo("Frederic")
                 assertThat(it.author.lastName).isEqualTo("Laloux")
