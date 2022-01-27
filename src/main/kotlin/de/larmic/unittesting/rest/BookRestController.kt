@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDate
 
 // Beispiel für "Tested eure Frameworks"
+//
+// 1. Siehe BadBookRestControllerTest.kt
+// 2. Siehe GoodBookRestControllerTest.kt
 @RestController
 class BookRestController(private val dtoToDomainMapper: DtoToDomainMapper, private val bookRepository: BookRepository) {
 

@@ -10,6 +10,14 @@ import org.junit.jupiter.api.Test
 import java.time.LocalDate
 import java.time.Month
 
+// 1. Kein IT bedeutet "keine Abhängigkeiten" bedeutet "nur mocking ist erlaubt"
+//      -> aufwendiges Mocking
+//      -> schlechte Lesbarkeit
+//
+// 2. dtoToDomainMapperMock durch echte Implementierung ersetzen
+//      -> weniger Whitebox-Testing
+//      -> bessere Lesbarkeit
+//      -> Kein Unit-Test mehr?
 internal class BadBookRestControllerTest {
 
     private val dtoToDomainMapperMock = mockk<DtoToDomainMapper>()
@@ -26,7 +34,6 @@ internal class BadBookRestControllerTest {
 
         val dtoSlot = slot<BookDto>()
 
-        // configure mock
         every { dtoToDomainMapperMock.map(capture(dtoSlot)) } answers {
             val capturedDto = dtoSlot.captured
             Book(
