@@ -4,6 +4,10 @@ import org.springframework.stereotype.Repository
 import java.time.LocalDate
 import java.util.*
 
+// Warum ist nutzen wir kein IT? -> Messbarkeit (Testabdeckung)
+// TODO use BookJpaRepository
+// TODO replace it by entity manager -> mock test will fail
+// TODO h2 vs postgres -> find a breaking change
 @Repository
 class BookRepository {
 
