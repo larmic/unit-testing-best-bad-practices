@@ -3,10 +3,10 @@ package de.larmic.unittesting.testcontainers
 import de.larmic.unittesting.database.BookJpaRepository
 import org.junit.jupiter.api.BeforeEach
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.test.context.ContextConfiguration
 
-@SpringBootTest
+@DataJpaTest
 @ContextConfiguration(initializers = [PostgresContextInitializer::class])
 abstract class PostgreSQLTest {
 
