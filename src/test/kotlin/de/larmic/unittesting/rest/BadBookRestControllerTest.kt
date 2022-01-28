@@ -17,7 +17,7 @@ import java.time.Month
 // 2. dtoToDomainMapperMock durch echte Implementierung ersetzen
 //      -> weniger Whitebox-Testing
 //      -> bessere Lesbarkeit
-//      -> Kein Unit-Test mehr?
+//      -> Warum ist es kein Unit-Test mehr? Zu dogmatisch?
 internal class BadBookRestControllerTest {
 
     private val dtoToDomainMapperMock = mockk<DtoToDomainMapper>()
