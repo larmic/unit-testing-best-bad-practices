@@ -1,32 +1,35 @@
 package de.larmic.unittesting.database
 
-import de.larmic.unittesting.testcontainers.AbstractPostgreSQLTest
+import io.mockk.every
+import io.mockk.mockk
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.context.annotation.Import
 import java.time.LocalDate
 import java.time.Month
 import java.util.*
 
-@Import(BookRepository::class)
-internal class GoodBookRepositoryTest : AbstractPostgreSQLTest() {
+// 1. Kein IT bedeutet "keine Abhängigkeiten" bedeutet "nur mocking ist erlaubt"
+//
+// 2. Ändere im Produktivcode zu "alternative findById()-implementation"
+//      -> Test schlägt fehl
+//      -> Verstoß gegen "Unit-Test sollen Refactoringsicher sein"
+internal class BadBookRepositoryTest {
 
-    @Autowired
-    private lateinit var bookRepository: BookRepository
+    private val bookJpaRepositoryMock = mockk<BookJpaRepository>()
+    private val bookRepository = BookRepository(bookJpaRepository = bookJpaRepositoryMock)
 
     @Test
     internal fun `find by id`() {
         val id = UUID.randomUUID()
-        val bookEntity = BookEntity(
+
+        every { bookJpaRepositoryMock.existsById(id) } returns true
+        every { bookJpaRepositoryMock.getById(id) } returns BookEntity(
             id = id,
             title = "Reinventing Organizations",
             createDate = LocalDate.of(2014, Month.OCTOBER, 18),
             authorFirstName = "Frederic",
             authorLastName = "Laloux",
         )
-
-        bookJpaRepository.save(bookEntity)
 
         val loadedBook = bookRepository.findById(id)!!
 

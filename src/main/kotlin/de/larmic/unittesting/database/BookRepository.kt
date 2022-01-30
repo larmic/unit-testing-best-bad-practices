@@ -4,8 +4,11 @@ import org.springframework.stereotype.Repository
 import java.time.LocalDate
 import java.util.*
 
+// Beispiel für "Mocking ist 💩"
+// 1. Siehe BadBookRepositoryTest.kt
+// 2. Siehe GoodBookRepositoryTest.kt
+//
 // Warum ist nutzen wir kein IT? -> Messbarkeit (Testabdeckung)
-// TODO replace it by entity manager -> mock test will fail
 // TODO h2 vs postgres -> find a breaking change
 @Repository
 class BookRepository(private val bookJpaRepository: BookJpaRepository) {
@@ -15,6 +18,9 @@ class BookRepository(private val bookJpaRepository: BookJpaRepository) {
             bookJpaRepository.getById(id).toDomain()
         } else null
     }
+
+    // ❤️ alternative findById()-implementation
+    //fun findById(id: UUID) = bookJpaRepository.findById(id).orElseGet { null }.toDomain()
 
     // TODO findByLastName(...) : List<Book>
 
@@ -26,14 +32,6 @@ class BookRepository(private val bookJpaRepository: BookJpaRepository) {
 
 data class Book(val id: UUID = UUID.randomUUID(), val title: String, val author: Author, val createDate: LocalDate)
 data class Author(val firstName: String, val lastName: String)
-
-private fun Book.toEntity() = BookEntity(
-    id = this.id,
-    title = this.title,
-    createDate = this.createDate,
-    authorFirstName = this.author.firstName,
-    authorLastName = this.author.lastName
-)
 
 private fun BookEntity.toDomain() =
     Book(id = this.id, title = this.title, createDate = this.createDate, author = this.toAuthor())
