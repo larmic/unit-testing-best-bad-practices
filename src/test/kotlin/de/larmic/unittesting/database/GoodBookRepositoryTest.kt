@@ -36,4 +36,26 @@ internal class GoodBookRepositoryTest : AbstractPostgreSQLTest() {
         assertThat(loadedBook.author.lastName).isEqualTo("Laloux")
         assertThat(loadedBook.createDate).isEqualTo(LocalDate.of(2014, Month.OCTOBER, 18))
     }
+
+    @Test
+    internal fun `find by title`() {
+        val id = UUID.randomUUID()
+        val bookEntity = BookEntity(
+            id = id,
+            title = "Reinventing Organizations",
+            createDate = LocalDate.of(2014, Month.OCTOBER, 18),
+            authorFirstName = "Frederic",
+            authorLastName = "Laloux",
+        )
+
+        bookJpaRepository.save(bookEntity)
+
+        val loadedBook = bookRepository.findByTitle(title = "Reinventing Organizations")!!
+
+        assertThat(loadedBook.id).isEqualTo(id)
+        assertThat(loadedBook.title).isEqualTo("Reinventing Organizations")
+        assertThat(loadedBook.author.firstName).isEqualTo("Frederic")
+        assertThat(loadedBook.author.lastName).isEqualTo("Laloux")
+        assertThat(loadedBook.createDate).isEqualTo(LocalDate.of(2014, Month.OCTOBER, 18))
+    }
 }

@@ -1,6 +1,7 @@
 package de.larmic.unittesting.database
 
 import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
 import java.time.LocalDate
 import java.util.*
@@ -10,7 +11,12 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Repository
-interface BookJpaRepository : JpaRepository<BookEntity, UUID>
+interface BookJpaRepository : JpaRepository<BookEntity, UUID> {
+
+    @Query(value = "SELECT * FROM book b WHERE b.title = ?1 LIMIT 1", nativeQuery = true)
+    fun findByTitle(title: String) : BookEntity?
+
+}
 
 @Entity
 @Table(name = "book")
