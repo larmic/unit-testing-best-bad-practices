@@ -5,6 +5,11 @@
 
 Codebeispiele für meinen Vortrag "Das untere Ende der Testpyramide"
 
+## Beispiel für ```Mocking ist 💩```
+Siehe [BookRepository](src/main/kotlin/de/larmic/unittesting/database/BookRepository.kt) und die zugehörigen
+[BadBookRepositoryTest](src/test/kotlin/de/larmic/unittesting/database/BadBookRepositoryTest.kt) und
+[GoodBookRepositoryTest](src/test/kotlin/de/larmic/unittesting/database/GoodBookRepositoryTest.kt) Tests.
+
 ## Beispiel für ```Testet eure Frameworks```
 
 Siehe [BookRestController](src/main/kotlin/de/larmic/unittesting/rest/BookRestController.kt) und die 

@@ -13,6 +13,7 @@ import java.util.*
 // 2. Ändere im Produktivcode zu "alternative findById()-implementation"
 //      -> Test schlägt fehl
 //      -> Verstoß gegen "Unit-Test sollen Refactoringsicher sein"
+//      -> Beispiel für "Das passiert bei Whitebox-Testing"
 //
 // 3. Ändere Native Query in BookJpaRepository#findByTitle(...). z.B. * durch b ersetzen
 //      -> Test schlägt fehl
