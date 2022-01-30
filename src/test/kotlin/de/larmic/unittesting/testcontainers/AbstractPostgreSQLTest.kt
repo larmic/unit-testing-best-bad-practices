@@ -8,7 +8,7 @@ import org.springframework.test.context.ContextConfiguration
 
 @DataJpaTest
 @ContextConfiguration(initializers = [PostgresContextInitializer::class])
-abstract class PostgreSQLTest {
+abstract class AbstractPostgreSQLTest {
 
     @Autowired
     protected lateinit var bookJpaRepository: BookJpaRepository

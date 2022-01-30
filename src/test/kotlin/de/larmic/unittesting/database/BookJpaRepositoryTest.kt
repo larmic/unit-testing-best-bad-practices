@@ -1,13 +1,13 @@
 package de.larmic.unittesting.database
 
-import de.larmic.unittesting.testcontainers.PostgreSQLTest
+import de.larmic.unittesting.testcontainers.AbstractPostgreSQLTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
 import java.time.Month
 import java.util.*
 
-class BookJpaRepositoryTest : PostgreSQLTest() {
+class BookJpaRepositoryTest : AbstractPostgreSQLTest() {
 
     @Test
     internal fun `verify testcontainers and spring data is correctly running`() {
