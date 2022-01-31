@@ -13,11 +13,9 @@ import java.util.*
 @Repository
 class BookRepository(private val bookJpaRepository: BookJpaRepository) {
 
-    fun findById(id: UUID): Book? {
-        return if (bookJpaRepository.existsById(id)) {
-            bookJpaRepository.getById(id).toDomain()
-        } else null
-    }
+    fun findById(id: UUID) = if (bookJpaRepository.existsById(id)) {
+        bookJpaRepository.getById(id).toDomain()
+    } else null
 
     // ❤️ alternative findById()-implementation
     //fun findById(id: UUID) = bookJpaRepository.findById(id).orElseGet { null }.toDomain()
