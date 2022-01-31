@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDate
 
 // Beispiel für "Tested eure Frameworks"
+// Beispiel für "Tested Getter und Setter"
 //
 // 1. Siehe BadBookRestControllerTest.kt
 // 2. Siehe GoodBookRestControllerTest.kt

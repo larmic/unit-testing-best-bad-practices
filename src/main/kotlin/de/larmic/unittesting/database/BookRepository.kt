@@ -4,7 +4,7 @@ import org.springframework.stereotype.Repository
 import java.time.LocalDate
 import java.util.*
 
-// Beispiel für "Mocking ist 💩"
+// Beispiel für "Mocking ist 💩" oder "Whitebox-Testing ist 💥"
 // 1. Siehe BadBookRepositoryTest.kt
 // 2. Siehe GoodBookRepositoryTest.kt
 //

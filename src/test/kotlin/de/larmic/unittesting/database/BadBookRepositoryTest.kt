@@ -17,6 +17,10 @@ import java.util.*
 //
 // 3. Ändere Native Query in BookJpaRepository#findByTitle(...). z.B. * durch b ersetzen
 //      -> Test schlägt fehl
+//
+// 4. Entferne Zeile 31
+//      -> Test schlägt fehl
+//      -> Whitebox?
 internal class BadBookRepositoryTest {
 
     private val bookJpaRepositoryMock = mockk<BookJpaRepository>()
