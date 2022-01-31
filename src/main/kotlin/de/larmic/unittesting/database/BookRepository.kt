@@ -10,7 +10,6 @@ import java.util.*
 //
 // Warum ist nutzen wir kein IT? -> Messbarkeit (Testabdeckung)
 // Was ist die Aufgabe dieses Repositories? Speichern in die DB!
-// TODO h2 vs postgres -> find a breaking change
 @Repository
 class BookRepository(private val bookJpaRepository: BookJpaRepository) {
 
