@@ -16,10 +16,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import java.time.LocalDate
 import java.time.Month
 
-// Echte Aufgabe des Controllers?
-//      -> Annahme von JSON
-//      -> Übergabe an das fachliche (im DDD-Sinne) Repository
-//      -> Mapping ist hier nicht relevant und Implementierungsdetail (Whitebox vs. Blackbox)
 @WebMvcTest(BookRestController::class, DtoToDomainMapper::class)
 internal class GoodBookRestControllerTest {
 
@@ -42,7 +38,6 @@ internal class GoodBookRestControllerTest {
             } """
         )
 
-        // TODO gute Stelle für: man kann auch einen eigenen Stellvertreter definieren
         verify {
             bookRepositoryMock.store(withArg {
                 assertThat(it.id).isNotNull
