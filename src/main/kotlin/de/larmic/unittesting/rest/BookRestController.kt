@@ -8,14 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDate
 
-// Beispiel für "Testet eure Frameworks"
-// Beispiel für "Testet Getter und Setter"
-//
-// 1. Siehe BadBookRestControllerTest.kt
-// 2. Siehe GoodBookRestControllerTest.kt
-// 3. Ändere Pattern an 'createDate' und führe beide Tests aus
-//
-// Dogma durchbrochen
 @RestController
 class BookRestController(private val dtoToDomainMapper: DtoToDomainMapper, private val bookRepository: BookRepository) {
 
