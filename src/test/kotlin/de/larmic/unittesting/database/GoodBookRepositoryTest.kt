@@ -10,6 +10,7 @@ import java.time.Month
 import java.util.*
 
 @Import(BookRepository::class)
+// erklären, dass für die PostgreSQL Docker verwendet
 internal class GoodBookRepositoryTest : AbstractPostgreSQLTest() {
 
     @Autowired

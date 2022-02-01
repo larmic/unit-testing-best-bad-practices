@@ -42,6 +42,7 @@ internal class GoodBookRestControllerTest {
             } """
         )
 
+        // TODO gute Stelle für: man kann auch einen eigenen Stellvertreter definieren
         verify {
             bookRepositoryMock.store(withArg {
                 assertThat(it.id).isNotNull

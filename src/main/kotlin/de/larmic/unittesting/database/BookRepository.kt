@@ -8,8 +8,13 @@ import java.util.*
 // 1. Siehe BadBookRepositoryTest.kt
 // 2. Siehe GoodBookRepositoryTest.kt
 //
-// Warum ist nutzen wir kein IT? -> Messbarkeit (Testabdeckung)
 // Was ist die Aufgabe dieses Repositories? Speichern in die DB!
+//     -> Durchbricht das Dogma "keine Technik nutzen"
+// Warum ist nutzen wir kein IT?
+//     -> Messbarkeit (Testabdeckung)
+//     -> keine Kontrolle über die Tests -> Dogmen durchbrechen (haben wir im Team gelernt)
+//
+// Wie gehen wir damit um, wenn mehr Zeichen als möglich genutzt werden?
 @Repository
 class BookRepository(private val bookJpaRepository: BookJpaRepository) {
 
