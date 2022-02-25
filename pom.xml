@@ -37,7 +37,7 @@
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
         <testcontainers.version>1.16.3</testcontainers.version>
         <mockk.version>1.12.2</mockk.version>
-        <springmockk.version>3.1.0</springmockk.version>
+        <springmockk.version>3.1.1</springmockk.version>
     </properties>
 
     <dependencies>
