@@ -31,7 +31,7 @@
         <kotlin.version>1.6.10</kotlin.version>
 
         <!-- database -->
-        <flyway-core.version>8.5.4</flyway-core.version>
+        <flyway-core.version>8.5.5</flyway-core.version>
 
         <!-- testing -->
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
