@@ -19,6 +19,6 @@ class PostgresContextInitializer : ApplicationContextInitializer<ConfigurableApp
     }
 
     companion object {
-        val postgreSQLContainer = PostgreSQLContainer(DockerImageName.parse("postgres:13.3"))
+        val postgreSQLContainer = PostgreSQLContainer(DockerImageName.parse("postgres:16.4"))
     }
 }
