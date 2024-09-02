@@ -7,8 +7,8 @@ Codebeispiele für meinen Vortrag **Das untere Ende der Testpyramide**
 
 ### Zur Ausführung wird benötigt
 
-* Java 17
-* Maven >= 3.2.x
+* Java 21
+* Maven >= 3.9.x
 * Docker >= 3.0
 
 ### Beispiel für ```Mocking ist 💩``` und ```Whitebox-Testing ist 💥```
