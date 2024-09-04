@@ -18,7 +18,7 @@ Codebeispiele für meinen Vortrag **Das untere Ende der Testpyramide**
 2. [BadBookRepositoryTest](src/test/kotlin/de/larmic/unittesting/database/BadBookRepositoryTest.kt)
    1. Kein IT → _keine Abhängigkeiten_ → _nur mocking ist erlaubt_
    2. `find by id` erklären und Test ausführen ✅
-      1. `find by id` durch Alternative ersetzen `= bookJpaRepository.findById(id).orElseGet { null }.toDomain()`
+      1. `find by id` durch Alternative ersetzen `= bookJpaRepository.getReferenceById(id)`
          * Test schlägt fehl 💥
          * **Verstoß** gegen _Unit-Test sollen Refactoringsicher sein_
          * **Beispiel** für _Das passiert bei Whitebox-Testing_

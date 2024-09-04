@@ -13,7 +13,7 @@ import jakarta.persistence.Table
 @Repository
 interface BookJpaRepository : JpaRepository<BookEntity, UUID> {
 
-    @Query(value = "SELECT * FROM book b WHERE b.title = ?1 LIMIT 1", nativeQuery = true)
+    @Query(value = "SELECT b FROM book b WHERE b.title = ?1 LIMIT 1", nativeQuery = true)
     fun findByTitle(title: String) : BookEntity?
 
 }
