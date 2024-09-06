@@ -1,7 +1,5 @@
 package de.larmic.unittesting.database
 
-import org.springframework.data.jpa.domain.AbstractPersistable_.id
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
 import java.time.LocalDate
 import java.util.*
