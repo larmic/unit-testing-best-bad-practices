@@ -22,5 +22,5 @@ class BookRestController(
 }
 
 data class BookDto(val title: String, val author: AuthorDto,
-                   @JsonFormat(pattern = "yyyy-MM-dd") val createDate: LocalDate)
+                   @JsonFormat(pattern = "dd.MM.yyyy") val createDate: LocalDate)
 data class AuthorDto(val firstName: String, val lastName: String)
