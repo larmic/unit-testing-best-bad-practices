@@ -21,7 +21,7 @@ interface BookJpaRepository : JpaRepository<BookEntity, UUID> {
 @Entity
 @Table(name = "book")
 data class BookEntity(
-    @Id val id: UUID,
+    @Id val id: UUID = UUID.randomUUID(),
     @Column(name = "title", nullable = false) val title: String,
     @Column(name = "create_date", nullable = false) val createDate: LocalDate,
     @Column(name = "author_first_name", nullable = false) val authorFirstName: String,

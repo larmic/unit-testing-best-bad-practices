@@ -5,6 +5,8 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Import
+import org.springframework.data.jpa.domain.AbstractPersistable_.id
+import org.testcontainers.shaded.org.bouncycastle.asn1.x500.style.RFC4519Style.title
 import java.time.LocalDate
 import java.time.Month
 import java.util.*
@@ -17,16 +19,14 @@ internal class GoodBookRepositoryTest : AbstractPostgreSQLTest() {
 
     @Test
     internal fun `find by id`() {
-        val id = UUID.randomUUID()
-        val bookEntity = BookEntity(
-            id = id,
-            title = "Reinventing Organizations",
-            createDate = LocalDate.of(2014, Month.OCTOBER, 18),
-            authorFirstName = "Frederic",
-            authorLastName = "Laloux",
-        )
-
-        bookJpaRepository.save(bookEntity)
+        val id = bookJpaRepository.save(
+            BookEntity(
+                title = "Reinventing Organizations",
+                createDate = LocalDate.of(2014, Month.OCTOBER, 18),
+                authorFirstName = "Frederic",
+                authorLastName = "Laloux",
+            )
+        ).id
 
         val loadedBook = bookRepository.findById(id)!!
 
@@ -39,16 +39,14 @@ internal class GoodBookRepositoryTest : AbstractPostgreSQLTest() {
 
     @Test
     internal fun `find by title`() {
-        val id = UUID.randomUUID()
-        val bookEntity = BookEntity(
-            id = id,
-            title = "Reinventing Organizations",
-            createDate = LocalDate.of(2014, Month.OCTOBER, 18),
-            authorFirstName = "Frederic",
-            authorLastName = "Laloux",
-        )
-
-        bookJpaRepository.save(bookEntity)
+        val id = bookJpaRepository.save(
+            BookEntity(
+                title = "Reinventing Organizations",
+                createDate = LocalDate.of(2014, Month.OCTOBER, 18),
+                authorFirstName = "Frederic",
+                authorLastName = "Laloux",
+            )
+        ).id
 
         val loadedBook = bookRepository.findByTitle(title = "Reinventing Organizations")!!
 
